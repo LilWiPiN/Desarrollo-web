@@ -1,0 +1,137 @@
+:root {
+    --primary: #FF9950; ;
+    --primary-hover: #CD7D7C;                
+    --secondary: #EFD0F8;
+    --secondary-hover: #B8A1D9;
+    --aura: #9265CA80;
+    --background: #261E5A;
+    --navbar-height: 10rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    z-index: 2;
+}
+
+.menu-bar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 7rem 20rem 7rem 20rem;
+    gap: 2rem;
+    background-color: var(--background);
+    height: 10rem;
+}
+
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+}
+
+.menu-navigation {    
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1.5rem;
+    padding: 0;
+    background-color: var(--background);
+}
+
+.menu-logo {
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+}
+
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+                    
+.menu-navigation > li {
+  display: flex;
+  position: relative;
+  padding: 0;
+  color: white;
+  cursor: pointer;
+  width: max-content;
+  transition: all 0.2s;
+}
+
+.menu-navigation > li:hover {
+    color: var(--primary)
+}
+
+.menu-navigation > li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.125rem;
+  bottom: -0.3rem;
+  left: 0;
+  background: linear-gradient(90deg, var(--background), var(--primary), var(--background));
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+
+.menu-navigation > li:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+
+@media (min-width: 1150px) {
+    .menu-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 1150px) {
+    .menu-navigation {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-logo {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .menu-bar{
+        padding: 5rem 10rem 5rem 10rem;
+    }
+
+    .menu-navigation--mobile {
+        top: var(--navbar-height);
+        position: absolute;
+        display: flex;
+        padding: 1.25rem;
+        margin-left: 5rem;
+        background-color: var(--background);
+        width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        gap: 1.5rem;
+        flex-direction: column;
+        animation: fade 0.4s ease-in 1 forwards;
+    }
+}
+
+@media (max-width: 560px) {
+    .menu-bar {
+        padding: 0 3rem 0 3rem;
+    }
+}
